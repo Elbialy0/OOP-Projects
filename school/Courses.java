@@ -1,4 +1,9 @@
 package school;
+/**
+ * Create by Elbialy on 2/12/2024 
+ * This class is responsible to enroll in courses 
+ *
+ */
 
 public class Courses {
     private String name;
