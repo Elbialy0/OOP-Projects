@@ -1,4 +1,7 @@
 package school;
+
+import java.util.ArrayList;
+
 /**
  * Created by Elbialy on 2/12/2024
  * This class is responsalbe for keeping the track of 
@@ -13,6 +16,12 @@ public class Student {
     private int grade;
     private float feesPaid;
     private float feesTotal;
+    // total grades of courses 
+    private int totalGrades=0;
+    // grades that student achives 
+    private float studentGrade=0;
+    private ArrayList<Courses> courses =new ArrayList<>();
+
     /*
      * To create new student by intializing 
      * id by intializeIdField and and on to it 
@@ -75,6 +84,34 @@ public class Student {
     public float remainFees(){
         return this.feesTotal-this.feesPaid;
     }
+    // used to set courses of the student
+    public void setCourses(ArrayList<Courses> courses){
+        this.courses=courses;
+        // used to count the total grades of the courses
+        for (Courses course : courses) {
+            totalGrades+=course.getGrade();
+        }
+    }
+    // used to get courses of the student
+    public ArrayList<Courses> getCourses(){
+        return courses;
+    }
+    // used to get the final grades of the student
+    public float finalGrades(){
+        for (Courses course : courses) {
+            studentGrade+=course.getStudentGrade();
+        }
+        return studentGrade;
+    }
+    // used to get the total grades
+    public int getTotalGrades(){
+        return this.totalGrades;
+    }
+    // used to know if student success or not
+    public boolean isSuccess(){
+        return (totalGrades/2)<=studentGrade;
+    }
+    
  
 
 }
