@@ -20,6 +20,20 @@ public class School {
     }
     /**
      * 
+     * @param money the money added to the school 
+     */
+    public void addTotalMoneyEarned(int money){
+        totalMoneyEarned+=money;
+    }
+    /**
+     * 
+     * @param money the money added to the total money spent by school 
+     */
+    public void addedTotalMoneySpent(int money){
+        totalMoneySpent+=money;
+    }
+    /**
+     * 
      * @param teacher add new teacher to the staff
      */
     public void addNewTeacher(Teacher teacher, int salary){

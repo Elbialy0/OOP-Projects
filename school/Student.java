@@ -37,7 +37,8 @@ public class Student {
         this.feesPaid=feesPaid;
         this.feesTotal=30000;
         this.grade=grade;
-        this.name=name;
+        this.name=name; 
+        
     }
     /* Used to update the student's grade
     * @param grade new grade of the student
@@ -111,6 +112,7 @@ public class Student {
     public boolean isSuccess(){
         return (totalGrades/2)<=studentGrade;
     }
+    
     
  
 
