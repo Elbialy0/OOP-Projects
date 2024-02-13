@@ -78,8 +78,28 @@ public class Teacher {
     public Courses getCourse(){
         return this.course;
     }
-    
 
+    /**
+     *
+     * @param salary pay to the teacher and add to total money spent by the school
+     */
+    public void  receiveSalary(){
+        School.addedTotalMoneySpent((int) this.salary);
+    }
 
-
+    /**
+     *
+     * @return all data about teacher
+     */
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", salary=" + salary +
+                ", name='" + name + '\'' +
+                ", bouns=" + bouns +
+                ", teacherRate=" + teacherRate +
+                ", course=" + course +
+                '}';
+    }
 }

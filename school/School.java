@@ -5,8 +5,8 @@ import java.util.List;
 public class School {
     private List<Teacher> teacher;
     private List<Student> student;
-    private long totalMoneyEarned; 
-    private long totalMoneySpent;
+    private static long totalMoneyEarned=0;
+    private static  long totalMoneySpent=0;
     /**
      * 
      * @param teacher set the list of the teachers in the school
@@ -15,21 +15,20 @@ public class School {
     public School(List<Teacher> teacher, List<Student> student) {
         this.teacher = teacher;
         this.student = student;
-        totalMoneyEarned=0;
-        totalMoneySpent=0;
+
     }
     /**
      * 
      * @param money the money added to the school 
      */
-    public void addTotalMoneyEarned(int money){
+    public static void addTotalMoneyEarned(int money){
         totalMoneyEarned+=money;
     }
     /**
      * 
      * @param money the money added to the total money spent by school 
      */
-    public void addedTotalMoneySpent(int money){
+    public  static void addedTotalMoneySpent(int money){
         totalMoneySpent+=money;
     }
     /**
@@ -38,15 +37,13 @@ public class School {
      */
     public void addNewTeacher(Teacher teacher, int salary){
         this.teacher.add(teacher);
-        this.totalMoneySpent+=salary;
     }
     /**
      * 
      * @param student add new student to the students 
      */
-    public void addNewStudent(Student student,int fees){
+    public void addNewStudent(Student student){
         this.student.add(student);
-        totalMoneyEarned+=fees;
     }
     /**
      * 
@@ -99,9 +96,19 @@ public class School {
         System.out.println("Teacher not found !");
         return null;
     }
+    public int getNetGainMoney(){
+        return (int) (totalMoneyEarned-totalMoneySpent);
+    }
 
-
-  
-
-    
+    /**
+     *
+     * @return all data about school
+     */
+    @Override
+    public String toString() {
+        return "School{" +
+                "teacher=" + teacher +
+                ", student=" + student +
+                '}';
+    }
 }

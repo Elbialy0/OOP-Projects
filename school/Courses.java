@@ -37,4 +37,16 @@ public class Courses {
         return studentGrade;
     }
 
+    /**
+     *
+     * @return all data about course
+     */
+    @Override
+    public String toString() {
+        return "Courses{" +
+                "name='" + name + '\'' +
+                ", grade=" + grade +
+                ", studentGrade=" + studentGrade +
+                '}';
+    }
 }

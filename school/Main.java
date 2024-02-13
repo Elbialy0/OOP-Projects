@@ -32,10 +32,20 @@ public class Main {
 
         // create a school and add all data
         School mhss = new School(teachers, students);
-        System.out.println(mhss.getTotalMoneyEarned());
+        amr.updateFeesPaid(5000);
+        System.out.println("MHSS has earned : $" + mhss.getTotalMoneyEarned() );
+        mahmoud.receiveSalary();
+        System.out.println("MHSS has paid : $" + mhss.getTotalMoneySpent());
+        System.out.println("MHSS has net gain : $" + mhss.getNetGainMoney() );
+        System.out.println(mahmoud);
+        System.out.println(amr);
 
 
-        
+
+
+
+
+
     }
     
 }

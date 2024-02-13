@@ -37,7 +37,8 @@ public class Student {
         this.feesPaid=feesPaid;
         this.feesTotal=30000;
         this.grade=grade;
-        this.name=name; 
+        this.name=name;
+        School.addTotalMoneyEarned((int) feesPaid);
         
     }
     /* Used to update the student's grade
@@ -55,6 +56,7 @@ public class Student {
     // Used to add new paid fees
     public void updateFeesPaid(float fees){
         this.feesPaid+=fees;
+        School.addTotalMoneyEarned((int) fees);
     }
     // Used to get the id of the student 
     public int getId(){
@@ -112,8 +114,22 @@ public class Student {
     public boolean isSuccess(){
         return (totalGrades/2)<=studentGrade;
     }
-    
-    
- 
 
+    /**
+     *
+     * @return all data about the student
+     */
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", grade=" + grade +
+                ", feesPaid=" + feesPaid +
+                ", feesTotal=" + feesTotal +
+                ", totalGrades=" + totalGrades +
+                ", studentGrade=" + studentGrade +
+                ", courses=" + courses +
+                '}';
+    }
 }
