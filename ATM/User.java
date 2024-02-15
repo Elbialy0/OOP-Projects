@@ -35,13 +35,33 @@ public class User {
             this.pinHash=md.digest(pin.getBytes());
         } catch (NoSuchAlgorithmException e) {
            System.err.println("error , caught NoSuchAlgorithmException");
+           System.exit(0);
         }
         // create empty list of accounts
         this.accounts = new ArrayList<>();
         // git a new unique universal ID for the user
-        this.UUID = theBank.getNewUUID();
+        this.UUID = theBank.getNewUserUUID();
+        // successful registration massage
+        System.out.printf("New user %s %s with ID %s created .\n",firstName ,lastName,UUID);
+        theBank.addUser(this);
 
 
     }
+
+    /**
+     *
+     * @param account add to the user accounts list
+     */
+    public void addAccount(Account account){
+        this.accounts.add(account);
+    }
+
+    /**
+     *
+     * @return the UUID of the user
+     */
+     public String getUUID(){
+        return this.UUID;
+     }
 
 }
