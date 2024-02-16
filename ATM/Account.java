@@ -20,6 +20,7 @@ public class Account {
         this.uuid=theBank.getNewAccountUUID();
         holder.addAccount(this);
         theBank.addAccount(this);
+        System.out.printf("Account %s for %s created\n",name,holder.getName());
     }
 
     /**

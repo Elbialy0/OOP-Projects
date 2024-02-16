@@ -7,9 +7,9 @@ public class Bank {
     // the name of the bank
     private String name;
     // users of this bank
-    private ArrayList<User> users;
+    private ArrayList<User> users=new ArrayList<>();
     // accounts in this bank
-    private ArrayList<Account> accounts;
+    private ArrayList<Account> accounts = new ArrayList<>();
     // generate new UUID for the user
     public String getNewUserUUID(){
         // initialize
@@ -74,20 +74,46 @@ public class Bank {
 
 
     }
-
-    /**
-     * add new account to the bank
-     * @param account add to accounts list
-     */
     public void addAccount(Account account){
         this.accounts.add(account);
     }
 
     /**
-     * add new user to the bank
-     * @param user add to the users list
+     * add user
+     * @param firstName the first name of the user
+     * @param lastName  the second name of the user
+     * @param pin  password of the user
+     * @return new user
      */
-    public void addUser(User user){
-        this.users.add(user);
+    public User addUser(String firstName, String lastName, String pin){
+        // create a new user
+        User newUser = new User(firstName, lastName,this,pin);
+        // add this user to the list of the users
+        this.users.add(newUser);
+        return  newUser;
     }
+
+    /**
+     * Create new account
+     * @param user owner of the account
+     * @param typeOfTheAccount type of the account
+     */
+    public void addAccount(User user , String typeOfTheAccount){
+        Account account = new Account(typeOfTheAccount , user , this);
+    }
+    public User userLogin(String userID,String pin){
+
+        for (User user : this.users){
+            if(user.getUUID().compareTo(userID)==0){
+               if ( user.validateUser(pin)){
+                   System.out.println("Successful attempt");return user;}
+               else break;
+
+            }
+        }
+        return null;
+    }
+
+
+
 }

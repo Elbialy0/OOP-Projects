@@ -43,25 +43,46 @@ public class User {
         this.UUID = theBank.getNewUserUUID();
         // successful registration massage
         System.out.printf("New user %s %s with ID %s created .\n",firstName ,lastName,UUID);
-        theBank.addUser(this);
 
 
     }
 
     /**
      *
-     * @param account add to the user accounts list
+     * @param account added for user accounts
      */
-    public void addAccount(Account account){
+    public  void addAccount(Account account){
         this.accounts.add(account);
     }
 
     /**
      *
-     * @return the UUID of the user
+     * @return UUID for the user
      */
+
      public String getUUID(){
         return this.UUID;
      }
+
+    /**
+     *
+     * @return full name of the user
+     */
+     public String getName(){
+         return this.firstName+" "+this.lastName;
+     }
+     public boolean validateUser(String pin){
+         try {
+             MessageDigest md = MessageDigest.getInstance("MD5");
+             return MessageDigest.isEqual(md.digest(pin.getBytes()),this.pinHash);
+
+         } catch (NoSuchAlgorithmException e) {
+             System.err.println("error , caught NoSuchAlgorithmException");
+             System.exit(0);
+
+         }
+         return false;
+     }
+
 
 }
