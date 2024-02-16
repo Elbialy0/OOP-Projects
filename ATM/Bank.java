@@ -7,9 +7,20 @@ public class Bank {
     // the name of the bank
     private String name;
     // users of this bank
-    private ArrayList<User> users=new ArrayList<>();
+    private ArrayList<User> users;
     // accounts in this bank
-    private ArrayList<Account> accounts = new ArrayList<>();
+    private ArrayList<Account> accounts ;
+
+    /**
+     * create the bank
+     * @param name the name of the bank
+     */
+    public Bank(String name){
+        this.name=name;
+        this.users=new ArrayList<>();
+        this.accounts=new ArrayList<>();
+
+    }
     // generate new UUID for the user
     public String getNewUserUUID(){
         // initialize
@@ -101,6 +112,13 @@ public class Bank {
     public void addAccount(User user , String typeOfTheAccount){
         Account account = new Account(typeOfTheAccount , user , this);
     }
+
+    /**
+     * log in
+     * @param userID uuid of the user
+     * @param pin password of the user
+     * @return the user that match this information or return null
+     */
     public User userLogin(String userID,String pin){
 
         for (User user : this.users){

@@ -71,6 +71,12 @@ public class User {
      public String getName(){
          return this.firstName+" "+this.lastName;
      }
+
+    /**
+     * Validate login
+     * @param pin password of the user
+     * @return true if the pin is true and otherwise
+     */
      public boolean validateUser(String pin){
          try {
              MessageDigest md = MessageDigest.getInstance("MD5");
