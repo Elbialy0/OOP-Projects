@@ -90,5 +90,53 @@ public class User {
          return false;
      }
 
+    /**
+     * print summary of user's accounts
+     */
+    public void printAccountsSummary(){
+        for (int i=0 ; i<this.accounts.size();i++){
+            System.out.print((i+1)+")");
+            this.accounts.get(i).getSummary();
+        }
+
+     }
+
+    /**
+     * get first name of the user
+     * @return first name
+     */
+     public String getFirstName(){
+        return this.firstName;
+     }
+
+    /**
+     * get the balance of account
+     * @param uuid the uuid of the account
+     * @return balance if uuid is true and -1 if the uuid is false
+     */
+     public int getBalance(String uuid){
+         for (Account account : accounts){
+             if (account.getUUID().compareTo(uuid)==0)return account.getBalance();
+         }
+         System.out.println("Invalid ID , Please try again");
+         return -1;
+     }
+
+    /**
+     * get the number of total account that user own
+     * @return the number of accounts
+     */
+     public int getAccountsNumber(){
+         return this.accounts.size();
+     }
+
+    /**
+     * print the account transaction history
+     * @param acctNum index of the account
+     */
+     public void printAcctTransHistory(int acctNum){
+         this.accounts.get(acctNum-1).printTransHistory();
+     }
+
 
 }

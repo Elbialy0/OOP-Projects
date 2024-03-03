@@ -30,4 +30,39 @@ public class Account {
     public String getUUID(){
         return this.uuid;
     }
+
+    /**
+     * print the summary of the account
+     * now print the type only in the feature may print more information
+     */
+    public void getSummary(){
+
+        System.out.println("-"+ getName());
+    }
+
+    /**
+     *
+     * @return type of the account
+     */
+    public String getName(){
+        return this.name;
+    }
+
+    /**
+     *
+     * @return  the balance of the account
+     */
+    public int getBalance(){
+       return this.balance;
+    }
+
+    /**
+     * print transactions history of the account
+     */
+    public void printTransHistory(){
+        for (int i=0;i<this.transactions.size();i++){
+            System.out.println(this.transactions.get(i).getSummaryLine());
+        }
+    }
+
 }
