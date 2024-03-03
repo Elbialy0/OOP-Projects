@@ -138,5 +138,33 @@ public class User {
          this.accounts.get(acctNum-1).printTransHistory();
      }
 
+    /**
+     * get the balance of an account
+     * @param accountNum the number of the account
+     * @return the balance
+     */
+     public double getAccountBalance(int accountNum){
+         return accounts.get(accountNum-1).getBalance();
+     }
+
+    /**
+     * get the UUID of an account
+     * @param acctNum the index of the account
+     * @return the UUID
+     */
+     public String getAccountUUID(int acctNum){
+         return this.accounts.get(acctNum).getUUID();
+     }
+
+    /**
+     * add new transaction to the account
+     * @param accountNum index of the account
+     * @param amount the amount of money
+     * @param memo details of transaction
+     */
+     public void addAccountTransaction(int accountNum, double amount , String memo){
+         this.accounts.get(accountNum-1).addTransaction(amount,memo);
+     }
+
 
 }

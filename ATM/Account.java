@@ -65,4 +65,15 @@ public class Account {
         }
     }
 
+    /**
+     * add new transaction  and update the total balance
+     * @param amount the amount of money
+     * @param memo the details of the transaction
+     */
+    public void addTransaction(double amount , String memo){
+        Transaction newTransaction = new Transaction(amount,memo,this);
+        this.transactions.add(newTransaction);
+        this.balance+= (int) amount;
+    }
+
 }

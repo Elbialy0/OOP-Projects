@@ -19,9 +19,9 @@ public class Transaction {
      * @param memo of this transaction
      * @param inAccount destination  account
      */
-    public Transaction(double amount, Date timestamp, String memo, Account inAccount) {
+    public Transaction(double amount, String memo, Account inAccount) {
         this.amount = amount;
-        this.timestamp = timestamp;
+        this.timestamp = new Date() ;
         this.memo = memo;
         this.inAccount = inAccount;
     }

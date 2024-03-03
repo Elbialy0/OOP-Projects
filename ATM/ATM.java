@@ -95,7 +95,12 @@ public class ATM {
         String uuid = sc.nextLine();
         System.out.println(aUser.getBalance(uuid));
     }
-    // get transaction history of the account
+
+    /**
+     * Show the transaction history for an account
+     * @param theUser the logged-in User object
+     * @param sc Scanner object
+     */
     public static void showTransactionHistory(User theUser,Scanner sc){
         int accountNum;
         do {
@@ -109,6 +114,51 @@ public class ATM {
 
         }while(accountNum <= 0 || accountNum>theUser.getAccountsNumber() );
         theUser.printAcctTransHistory(accountNum);
+
+    }
+
+    /**
+     * make transfer operation from account to another for the same user
+     * @param theUser the user who do the transaction
+     * @param sc Scanner object
+     */
+    public static void transferFunds(User theUser,Scanner sc){
+        // inits
+        int fromAccount;
+        int toAccount;
+        double amount;
+        double acctBalance;
+        //get account to transfer from
+        do {
+            System.out.println("Enter the number of account to transfer from");
+            fromAccount = sc.nextInt();
+            if (fromAccount<=0||fromAccount>theUser.getAccountsNumber()){
+                System.out.println("Invalid number, please try again!");
+            }
+
+        }while(fromAccount<= 0 || fromAccount>theUser.getAccountsNumber() );
+        // get account to transfer to
+        do {
+            System.out.println("Enter the number of account to transfer to");
+            toAccount = sc.nextInt();
+            if (toAccount<=0||toAccount>theUser.getAccountsNumber()){
+                System.out.println("Invalid number, please try again!");
+            }
+        }while(toAccount<= 0 || toAccount>theUser.getAccountsNumber() );
+        // get the amount of the transaction
+        do {
+            System.out.println("Enter the amount to transfer");
+            amount = sc.nextDouble();
+            acctBalance =  theUser.getAccountBalance(fromAccount);
+            if (amount<=0||amount>acctBalance) System.out.println("You can't complete this transaction ");
+        } while (amount>acctBalance||amount<=0);
+        // finally, do the transfer
+        theUser.addAccountTransaction(fromAccount,-1*amount,String.format(
+                "Transfer to Account %s",theUser.getAccountUUID(toAccount)
+        ));
+
+
+
 
     }
 }
