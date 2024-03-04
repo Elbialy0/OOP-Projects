@@ -21,6 +21,7 @@ public class Account {
         holder.addAccount(this);
         theBank.addAccount(this);
         System.out.printf("Account %s for %s created\n",name,holder.getName());
+        transactions = new ArrayList<>();
     }
 
     /**

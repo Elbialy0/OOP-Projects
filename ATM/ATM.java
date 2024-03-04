@@ -12,6 +12,13 @@ public class ATM {
         User mahmoud = cib.addUser("Mahmoud","Reda","1234");
         // create account for the user
         cib.addAccount(mahmoud,"saving");
+        User curUser;
+        while (true){
+            curUser = ATM.mainMenuPrompt(cib,sc);
+            ATM.printUserMenu(curUser, sc);
+
+        }
+
 
 
 
@@ -91,8 +98,8 @@ public class ATM {
      * @param sc Scanner object
      */
     public static void showBalance(User aUser,Scanner sc){
-        System.out.println("Enter account UUID");
-        String uuid = sc.nextLine();
+        System.out.println("Enter account number");
+        int uuid = sc.nextInt();
         System.out.println(aUser.getBalance(uuid));
     }
 

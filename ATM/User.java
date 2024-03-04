@@ -114,12 +114,9 @@ public class User {
      * @param uuid the uuid of the account
      * @return balance if uuid is true and -1 if the uuid is false
      */
-     public int getBalance(String uuid){
-         for (Account account : accounts){
-             if (account.getUUID().compareTo(uuid)==0)return account.getBalance();
-         }
-         System.out.println("Invalid ID , Please try again");
-         return -1;
+     public int getBalance(int uuid){
+         return this.accounts.get(uuid-1).getBalance();
+
      }
 
     /**
