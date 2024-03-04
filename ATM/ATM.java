@@ -156,9 +156,43 @@ public class ATM {
         theUser.addAccountTransaction(fromAccount,-1*amount,String.format(
                 "Transfer to Account %s",theUser.getAccountUUID(toAccount)
         ));
+    }
 
+    /**
+     * Withdraw from an account
+     * @param theUser the owner of the account
+     * @param sc scanner object
+     */
+    public static void withdrawalFunds(User theUser, Scanner sc){
+        //inits
+        int acctNum;
+        double amount;
+        double balance;
+        // get account number
+        do {
+            System.out.println("Enter account number");
+           acctNum = sc.nextInt();
+            if (acctNum<=0||acctNum>theUser.getAccountsNumber()){
+                System.out.println("Invalid number, please try again!");
+            }
 
+        }while(acctNum<= 0 || acctNum>theUser.getAccountsNumber() );
+        balance = theUser.getAccountBalance(acctNum);
+        // get amount of withdraw
+        do {
+            System.out.println("Enter the amount you want to withdraw");
+            amount = sc.nextDouble();
+            if (amount<=0){
+                System.out.println("Amount must be more than 0");
+            }
+            else if (amount>balance){
+                System.out.println("Amount must be less than or equal balance");
+            }
 
-
+        }while (amount>balance||amount<=0);
+        theUser.addAccountTransaction(acctNum,-1*amount,"Withdraw");
+    }
+    public static void depositFunds(User theUser, Scanner sc){
+        
     }
 }
