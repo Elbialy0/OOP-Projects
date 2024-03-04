@@ -192,7 +192,33 @@ public class ATM {
         }while (amount>balance||amount<=0);
         theUser.addAccountTransaction(acctNum,-1*amount,"Withdraw");
     }
+
+    /**
+     * Deposit operation
+     * @param theUser the owner of the account
+     * @param sc Scanner object
+     */
     public static void depositFunds(User theUser, Scanner sc){
-        
+        // inits
+        int acctNum;
+        double amount;
+        // get account number
+        do {
+            System.out.println("Enter account number");
+            acctNum = sc.nextInt();
+            if (acctNum<=0||acctNum>theUser.getAccountsNumber()){
+                System.out.println("Invalid number, please try again!");
+            }
+        }while(acctNum<= 0 || acctNum>theUser.getAccountsNumber() );
+        // get amount
+        do {
+            System.out.println("Enter amount");
+            amount = sc.nextDouble();
+            if (amount<=0){
+                System.out.println("Amount must be more than 0");
+            }
+        }while (amount<=0);
+        // add money to the account
+        theUser.addAccountTransaction(acctNum,amount,"deposit");
     }
 }
